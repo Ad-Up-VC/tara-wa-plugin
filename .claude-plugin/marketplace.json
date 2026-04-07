@@ -1,0 +1,28 @@
+{
+  "name": "webbai-marketplace",
+  "owner": {
+    "name": "Webbai",
+    "email": "info@webbai.nl"
+  },
+  "metadata": {
+    "description": "Connect Claude to WhatsApp. Send messages, follow up with leads, run bulk campaigns, and set up automations.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "webbai",
+      "source": "./",
+      "description": "Connect Claude to WhatsApp. Send messages, follow up with leads, run bulk campaigns, set up automations — all through natural language.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Webbai",
+        "email": "info@webbai.nl"
+      },
+      "homepage": "https://webbai.nl",
+      "repository": "https://github.com/Ad-Up-VC/tara-wa-plugin",
+      "keywords": ["whatsapp", "messaging", "automation", "leads", "bulk-send", "crm"],
+      "category": "communication",
+      "tags": ["whatsapp", "messaging", "leads", "automation", "bulk-campaigns"]
+    }
+  ]
+}
