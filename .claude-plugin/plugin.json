@@ -1,16 +1,11 @@
 {
   "name": "webbai",
   "description": "Your WhatsApp AI agent. Send messages, follow up with leads, set up multi-step automations, manage your inbox, run bulk campaigns, and connect to Google Calendar — all through natural conversation.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": {
     "name": "Webbai",
     "email": "info@webbai.nl"
   },
   "homepage": "https://webbai.nl",
-  "userConfig": {
-    "api_key": {
-      "description": "Your Webbai API key (find it in Settings at webbai.nl)",
-      "sensitive": true
-    }
-  }
+  "repository": "https://github.com/Ad-Up-VC/tara-wa-plugin"
 }
