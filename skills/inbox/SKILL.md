@@ -19,7 +19,9 @@ Call `get_inbound_messages` with `unread_only: true`.
 
 ## Step 2: Show messages with draft replies
 
-Don't just list messages — immediately draft a reply for each one:
+Each message includes an `already_replied` field. If true, show it as already handled instead of drafting a new reply.
+
+Don't just list messages — immediately draft a reply for each unreplied one:
 
 "You have **3 new messages:**
 

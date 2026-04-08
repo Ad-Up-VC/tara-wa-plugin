@@ -16,16 +16,17 @@ Then drafts personalized replies and waits for your approval before sending anyt
 ## Workflow
 
 1. Call `get_inbound_messages` with `unread_only: true` to find unanswered messages
-2. For each unanswered message:
+2. For each message, check the `already_replied` field — skip any where `already_replied` is true
+3. For each truly unanswered message:
    - Check if it's within the 24h reply window
    - Draft a reply that matches the message tone and answers the question
    - Present for approval: send / edit / skip
-3. Call `get_leads` to find leads with status 'new' that haven't been contacted
+4. Call `get_leads` to find leads with status 'new' that haven't been contacted
 4. For new leads:
    - Group them together
    - Suggest sending the welcome template to all at once
    - Use `send_whatsapp_template` for first contacts (required by WhatsApp)
-5. Check `get_send_logs` for contacts messaged 2+ days ago with no reply
+5. Check `get_send_logs` with `days_back: 7` for contacts messaged 2+ days ago with no reply
 6. For stale conversations:
    - Suggest a gentle follow-up using a template
 7. Present summary of actions taken

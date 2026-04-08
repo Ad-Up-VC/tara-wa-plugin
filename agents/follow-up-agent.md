@@ -18,9 +18,11 @@ Every time you run, you:
 
 ## Step 1: Unanswered messages
 
-Call `get_inbound_messages` to find unread or unreplied messages.
+Call `get_inbound_messages` with `unread_only: true` to find unread messages.
 
-For each one, show:
+**Important:** Each message includes an `already_replied` field. If `already_replied` is true, skip it — the user already sent a reply to this contact after that message. Only draft replies for messages where `already_replied` is false.
+
+For each unreplied one, show:
 "**📩 Unanswered from Sarah Johnson** (received 3 hours ago)
 _'Hi, I saw your ad and I'm interested in a consultation'_
 
@@ -44,7 +46,7 @@ If they approve, use `send_whatsapp_template` for each (since these are first co
 
 ## Step 3: Follow-up suggestions
 
-Check `get_send_logs` for contacts who were messaged 2+ days ago but haven't replied.
+Check `get_send_logs` with `days_back: 7` for contacts who were messaged 2+ days ago but haven't replied.
 
 "**🔄 2 contacts might need a follow-up:**
 
