@@ -42,6 +42,13 @@ _'Hi, I saw your ad and I'm interested in a consultation'_
 
 → Send this reply? (yes / edit / skip)"
 
+**Auto-detect "follow up later" messages:** If a message contains phrases like "not now", "later", "next week", "call me back", "maybe later", "busy right now", or similar — automatically suggest setting a reminder:
+
+"💡 **Sarah said 'maybe next week' — want me to set a reminder?**
+→ ⏰ 1 week  |  ⏰ 2 weeks  |  ⏰ Custom  |  Skip"
+
+If approved, call `create_reminder` with the contact, date, and full context of what was discussed.
+
 ## Step 2: New leads without contact
 
 Call `get_leads` to find recent leads with status 'new'.

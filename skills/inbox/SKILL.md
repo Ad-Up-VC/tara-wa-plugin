@@ -80,6 +80,24 @@ Which ones should I send?"
 
 Your inbox is also live at **webbai.nl/inbox** for real-time chat."
 
+## Auto-suggest reminders
+
+When a message contains phrases like "not now", "later", "next week", "in a few days", "reach out next month", "call me back", "not interested right now", "maybe later", "busy this week", or similar delay/postpone language:
+
+1. **Automatically suggest a reminder** after showing the draft reply:
+
+"💡 **This sounds like a 'follow up later' — want me to set a reminder?**
+→ ⏰ Remind me in 1 week  |  ⏰ 2 weeks  |  ⏰ Custom date  |  No thanks"
+
+2. If they pick a time, call `create_reminder` with:
+   - The contact's ID
+   - The chosen date/time
+   - Context: what the lead said, what they're interested in, and what was discussed
+
+3. Also draft a polite "no problem, I'll reach out later" reply for the current message.
+
+Don't ask about reminders for normal conversational messages — only when someone is clearly postponing or asking to be contacted later.
+
 ## Tips for better drafts
 - Match the tone of the incoming message (casual → casual, formal → formal)
 - Keep replies short (1-2 sentences)

@@ -71,9 +71,15 @@ Check their setup status with `get_setup_status`. If WhatsApp isn't connected, g
 4. For older messages, suggest templates
 
 ### When a lead says "reach out later" or wants to delay
-1. Acknowledge to the user
-2. Call `create_reminder` with the appropriate future date and full context about the conversation
-3. Confirm: "Got it, I'll remind you to follow up with [name] on [date]. I saved the context about [what they discussed]."
+**Proactively detect this.** When showing inbox messages, if any message contains "not now", "later", "next week", "call me back", "maybe later", "in X days/weeks", "not interested right now", or similar postpone language — automatically suggest a reminder without the user asking:
+
+"💡 **Mike said 'not right now, maybe in 2 weeks' — want me to set a reminder?**
+→ ⏰ 2 weeks (April 23)  |  ⏰ Custom date  |  No thanks"
+
+If approved:
+1. Call `create_reminder` with the contact, calculated date, and full context (what they discussed, what they're interested in)
+2. Draft a polite reply acknowledging the postponement: _"No problem at all, Mike! I'll check in with you in a couple of weeks."_
+3. Confirm both: "Reminder set for April 23, and I've drafted a reply. Send it?"
 
 ### When they ask about appointments
 1. Call `get_appointments` to show the pipeline
