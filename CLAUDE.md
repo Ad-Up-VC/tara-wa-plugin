@@ -1,4 +1,4 @@
-# tara-wa-plugin/ (Webbai — v1.2.0)
+# tara-wa-plugin/ (Webbai — v1.3.0)
 
 Current Claude Code plugin. Lets clients drive Webbai via natural language in Claude. Installed via Claude Code Plugins settings → this repo URL.
 
@@ -26,7 +26,7 @@ scheduled-tasks/              (Pre-configured scheduled tasks)
 - **webbai** (HTTP) → `https://webbai.nl/mcp` — authenticated via Bearer API key (user pastes during setup). Exposes all 36 tools from `server/src/mcp/tools/`.
 - **channel** (stdio) → local Node process that subscribes to SSE and pushes inbound-message events into Claude's notification stream (so a new WhatsApp message can wake Claude up mid-conversation).
 
-## Skills (12)
+## Skills (13)
 
 Each skill is a markdown file with YAML frontmatter describing when to use it. Claude loads them on-demand.
 
@@ -37,12 +37,13 @@ Each skill is a markdown file with YAML frontmatter describing when to use it. C
 | `send-reminders/` | Check today's calendar → generate + send personalized appointment reminders. Dedups by phone. |
 | `campaigns/` | Bulk template campaigns: pick template, prepare contact list (system/CSV/manual), confirm, monitor batch status. |
 | `contacts/` | Search, import, update status, view lead activity. |
-| `flows/` | Guide user through creating automation flows — welcome, follow-ups, auto-replies, multi-step sequences. Explains plan limits. |
+| `flows/` | Guide user through creating automation flows — welcome, follow-ups, auto-replies, multi-step sequences. Covers the `event_type` filter (incl. `connected_whatsapp` for "welcome on WA connect"). Explains plan limits. |
+| `templates/` | **New in v1.3.** Create / edit / list / delete WhatsApp message templates. Covers Meta's gotchas (mandatory `example.body_text`, UTILITY vs MARKETING category rules, header/footer/URL button options, what to do with REJECTED templates). |
 | `appointments/` | View + update appointments, create manual appointments (non-Calendly). |
 | `demo-followups/` | Find yesterday's completed demos → propose + send personalized follow-ups. |
 | `crm-status/` | Query connected CRM (Pipedrive/HubSpot/Zoho) — deals, pipeline, activities for a contact. |
 | `calendly-setup/` | Connect Calendly via Personal Access Token. |
-| `setup/` | First-run onboarding: verify MCP connection, guide through WhatsApp / Google Calendar / contact import / scheduled tasks. |
+| `setup/` | First-run onboarding: verify MCP connection, guide through WhatsApp / Google Calendar / contact import / scheduled tasks. Includes the coexistence pairing-window heads-up. |
 | `settings/` | View + change account settings, subscription, API key. |
 
 ## Safety conventions (all skills)

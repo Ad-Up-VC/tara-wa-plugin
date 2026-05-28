@@ -37,6 +37,8 @@ Based on `get_setup_status` output, decide the greeting:
 >
 > **Go to [webbai.nl/inbox](https://webbai.nl/inbox) and click the big green 'Connect WhatsApp' button.** Meta will pop up a window where you sign in with Facebook, pick your WhatsApp Business account and phone number, and authorize Webbai. It takes about 60 seconds.
 >
+> 💡 **Heads-up for coexistence users** (anyone already using the WhatsApp Business app on the same phone): right after the popup closes, inbound messages may arrive in your Webbai inbox as 'Coexistence sync pending…' placeholders for a few minutes. That's Meta finishing the device-side pairing handshake — it clears on its own and real message content starts flowing as soon as it does. If you want the past chat history imported too, **keep the WhatsApp Business app open and on a stable connection during the popup** and **approve** the chat-history consent step when prompted. History sync runs once per signup; if you skip the consent it's email-only follow-ups going forward (which we already send automatically).
+>
 > ⚠️ **Note:** Our Meta app is currently in review. If you hit an error like 'this app is not yet approved', it's because of that — just let us know and we'll add you as a tester so you can keep going.
 >
 > Let me know when you're done and I'll verify the connection."

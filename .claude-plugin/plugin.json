@@ -1,13 +1,13 @@
 {
   "name": "webbai",
-  "description": "Your WhatsApp AI agent. Send messages, follow up with leads, set up multi-step automations, manage your inbox, run bulk campaigns, and connect to Google Calendar — all through natural conversation.",
-  "version": "1.2.0",
+  "description": "Your WhatsApp AI agent. Send messages, follow up with leads, set up multi-step automations, manage your inbox, build & submit message templates, run bulk campaigns, and connect to Google Calendar — all through natural conversation.",
+  "version": "1.3.0",
   "author": {
     "name": "Webbai",
     "email": "info@webbai.nl"
   },
   "homepage": "https://webbai.nl",
   "repository": "https://github.com/MaikelSnijders/webbai-claude-plugin",
-  "keywords": ["whatsapp", "messaging", "crm", "automations", "leads", "reminders"],
+  "keywords": ["whatsapp", "messaging", "crm", "automations", "leads", "reminders", "templates"],
   "license": "MIT"
 }

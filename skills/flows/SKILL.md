@@ -150,17 +150,25 @@ Then guide them through `/webbai:setup` Step 4 (CronCreate).
 
 ## Step 4: Create templates
 
-When you need to create a template, explain it simply:
+When you need to create a template, hand off to the dedicated `templates` skill if the request is template-heavy (multiple templates, edits, rejections to debug). For a single quick template inline, explain it briefly:
 
 "I need to create a message template first. WhatsApp requires templates to be approved before you can use them for first-contact messages. Here's what I'll create:
 
 **Template name:** welcome_lead
 **Message:** 'Hi {{1}}, thanks for your interest! We'd love to tell you more. When's a good time to chat?'
-**Category:** Marketing
+**Category:** Utility (recipient just took an action — signup)
 
 The {{1}} will be replaced with the person's name automatically. Let me create this..."
 
-Call `create_whatsapp_template` with proper components and example values.
+Call `create_whatsapp_template` with proper components. **CRITICAL**: any template with `{{N}}` variables MUST include `example.body_text` in the BODY component, or Meta auto-rejects within seconds:
+
+```json
+{
+  "type": "BODY",
+  "text": "Hi {{1}}, thanks for your interest!",
+  "example": { "body_text": [["Sam"]] }   // ← one string per distinct {{N}}
+}
+```
 
 After creation: "Template submitted! Utility templates are usually approved in minutes. Marketing templates can take a few hours. I'll set up the automation to use it — it'll start working as soon as Meta approves the template."
 
@@ -205,6 +213,41 @@ After setting up automations, give a clear summary:
 Everything will start working automatically once the templates are approved by Meta.
 
 You can check your inbox anytime at webbai.nl/inbox or by saying 'check my inbox' here."
+
+## `new_lead` sub-events via `trigger_config.event_type`
+
+`new_lead` is fired by Webbai for several distinct life-cycle moments, not just "form submitted". To target ONE specific moment, set `trigger_config.event_type`. Without a filter the automation fires on ALL `new_lead` events (which is usually wrong — different events deserve different messages).
+
+| `event_type` | When it fires | Typical action |
+|---|---|---|
+| `signup` | A brand-new account is created on Webbai (any auth path). `contact.phone` is the `email:<addr>` placeholder — they have no real WhatsApp number yet. **WhatsApp templates don't work here** — use email instead, or wait for `connected_whatsapp`. |
+| `connected_whatsapp` | An existing signup completes Embedded Signup and connects their WABA. `contact.phone` is now their real WhatsApp business number. **First moment a WhatsApp template can reach them.** |
+| `<crm-event>` | A CRM webhook (Pipedrive / HubSpot / Zoho / Tribe) fired — see "CRM-driven flows" section below for the deal-stage shape. |
+
+When `event_type` is omitted from `trigger_config`, the automation fires on every event. Almost always set it explicitly.
+
+### Recipe — "Welcome customer when they connect WhatsApp"
+
+This is the canonical pattern for Webbai-side admins onboarding their own customers:
+
+```json
+{
+  "name": "Welcome on WhatsApp connect",
+  "trigger_type": "new_lead",
+  "trigger_config": { "event_type": "connected_whatsapp" },
+  "action_type": "send_template",
+  "template_name": "webbai_connected",   // create via templates skill first
+  "language": "nl",
+  "variables": ["{{contact.name}}"],
+  "delay_minutes": 0
+}
+```
+
+The template + this automation are the two halves of the pattern. See `templates` skill for the full template body.
+
+### Recipe — "Email-only nudge sequence" (no WhatsApp yet)
+
+Webbai already ships this automatically as a system-wide scheduled task (`signup-followups`) that sends d1/d3/d7 nudge emails to anyone with `event_type='signup'` who hasn't connected WhatsApp yet. **Don't recreate it as an automation** — there's nothing to configure. If a user asks "how do I follow up with signups who haven't connected yet?" answer: "That's already running — d1, d3, and d7 nudge emails fire automatically. Stops once they connect."
 
 ## Common delay values (for reference)
 - Instant: 0
