@@ -4,11 +4,22 @@ Connect Claude to WhatsApp. Send messages, follow up with leads, run bulk campai
 
 ## Install
 
+**Option 1 — slash command (fastest, Claude Code terminal):**
+
 ```
 /install github:MaikelSnijders/wa-plugin
 ```
 
-Claude will open your browser to log in at [webbai.nl](https://webbai.nl). No API key needed.
+**Option 2 — via the Cowork UI (if you're not in a terminal):**
+
+1. Open Claude → **Cowork** (or **Code**) in the sidebar → **Customize**
+2. Click the **+ icon** → **Create plugin** → **Add marketplace**
+3. Paste: `https://github.com/MaikelSnijders/wa-plugin`
+4. Confirm — the plugin installs automatically
+
+Either way, Claude will open your browser to log in at [webbai.nl](https://webbai.nl) the first time you use a Webbai command. No API key needed.
+
+Full step-by-step with screenshots: [webbai.nl/connect-claude](https://webbai.nl/connect-claude).
 
 ## Skills
 
