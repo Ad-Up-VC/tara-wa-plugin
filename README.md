@@ -5,7 +5,7 @@ Connect Claude to WhatsApp. Send messages, follow up with leads, run bulk campai
 ## Install
 
 ```
-/install github:Ad-Up-VC/tara-wa-plugin
+/install github:MaikelSnijders/wa-plugin
 ```
 
 Claude will open your browser to log in at [webbai.nl](https://webbai.nl). No API key needed.

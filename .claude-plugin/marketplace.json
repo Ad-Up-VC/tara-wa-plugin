@@ -6,20 +6,20 @@
   },
   "metadata": {
     "description": "Connect Claude to WhatsApp. Send messages, follow up with leads, run bulk campaigns, and set up automations.",
-    "version": "1.2.0"
+    "version": "1.3.0"
   },
   "plugins": [
     {
       "name": "webbai",
       "source": "./",
-      "description": "Your WhatsApp AI agent. Send messages, follow up with leads, set up multi-step automations, manage your inbox, run bulk campaigns, and connect to Google Calendar — all through natural conversation.",
-      "version": "1.2.0",
+      "description": "Your WhatsApp AI agent. Send messages, follow up with leads, set up multi-step automations, manage your inbox, build & submit message templates, run bulk campaigns, and connect to Google Calendar — all through natural conversation.",
+      "version": "1.3.0",
       "author": {
         "name": "Webbai",
         "email": "info@webbai.nl"
       },
       "homepage": "https://webbai.nl",
-      "repository": "https://github.com/MaikelSnijders/webbai-claude-plugin",
+      "repository": "https://github.com/MaikelSnijders/wa-plugin",
       "keywords": ["whatsapp", "messaging", "automation", "leads", "bulk-send", "crm"],
       "category": "communication",
       "tags": ["whatsapp", "messaging", "leads", "automation", "bulk-campaigns"]

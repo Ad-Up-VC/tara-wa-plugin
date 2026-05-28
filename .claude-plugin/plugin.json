@@ -7,7 +7,7 @@
     "email": "info@webbai.nl"
   },
   "homepage": "https://webbai.nl",
-  "repository": "https://github.com/MaikelSnijders/webbai-claude-plugin",
+  "repository": "https://github.com/MaikelSnijders/wa-plugin",
   "keywords": ["whatsapp", "messaging", "crm", "automations", "leads", "reminders", "templates"],
   "license": "MIT"
 }
